@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Search Student</title>
+</head>
+<body>
+<div class="form-group" th:fragment = "content">
+    <h1>Search for a Student</h1>
+	<form action="#" th:action="@{/searchStudent}" method="get">        
+            <label for="studId">Student ID:</label>
+            <input type="number" class="form-control" id="studId" name="studId" required>
+        <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+
+    <div th:if="${student != null}">
+        <h2>Student Details</h2>
+        <p>Name: <span th:text="${student.studName}"></span></p>
+        <p>Fee: <span th:text="${student.studFee}"></span></p>
+        <p>College: <span th:text="${student.studClg}"></span></p>
+        <p>Address: <span th:text="${student.studAddress}"></span></p>
+        <p>Branch: <span th:text="${student.studBranch}"></span></p>
+        <p>PhoneNumber: <span th:text="${student.studPhoneNumber}"></span></p>
+    </div>
+
+    <div th:if="${error != null}">
+        <p th:text="${error}"></p>
+    </div>
+    </div>
+</body>
+</html>

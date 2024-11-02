@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Product Table</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <div th:fragment="content">
+    <h1>Student List</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Student ID</th>
+                <th>Student Name</th>
+                <th>Student PhoneNumber</th>
+                <th>Student Branch</th>
+                <th>Student College</th>
+                <th>Student Fee</th>
+                <th>Student ScholarShip</th>                
+                <th>Student Address</th>
+                <th>Joined On</th>
+                <th>Joined By</th>
+                <th>Action</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Iterate through the list of products -->
+            <tr th:each="student : ${students}">
+                <td th:text="${student.studId}"></td>
+                <td th:text="${student.studName}"></td>
+                 <td th:text="${student.studPhoneNumber}"></td>
+                 <td th:text="${student.studBranch}"></td>
+                 <td th:text="${student.studClg}"></td>
+                <td th:text="${student.studFee}"></td>
+                <td th:text="${student.studScholarShip}"></td>
+                <td th:text="${student.studAddress}"></td>
+                <!-- Handling null for the createdAt field -->
+                <td th:text="${student.joinedOn}"></td>
+                <td th:text="${student.joinedBy}"></td>
+                <td>
+        <a th:href="@{/delete(id=${student.studId})}" 
+            class = "btn btn-sm btn-danger"
+           onclick="return confirm('Are you sure you want to delete this student?');">
+            Delete
+        </a>
+    </td>
+    <td>
+        <a th:href="@{/edit(studId=${student.studId})}" 
+            class = "btn btn-sm btn-danger"
+           onclick="return confirm('Are you sure you want to edit this student?');">
+            edit
+        </a>
+    </td>
+            </tr>
+            
+         
+        </tbody>
+    </table>
+    </div>
+</body>
+</html>

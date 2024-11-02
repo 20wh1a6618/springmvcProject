@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Edit Student</title>
+    <!-- Bootstrap CDN -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container mt-5">
+    <h2>Edit Student</h2>
+
+<form th:action="@{/update(studId=${studId})}" method="post" th:object="${studentModel}">
+        
+        <div class="form-group">
+            <label for="studName">Student Name</label>
+            <input type="text" th:field="*{studName}" class="form-control" id="studName" required>
+        </div>
+
+        <div class="form-group">
+            <label for="studBranch">Branch</label>
+            <input type="text" th:field="*{studBranch}" class="form-control" id="studBranch" required>
+        </div>
+
+        <div class="form-group">
+            <label for="studClg">College</label>
+            <input type="text" th:field="*{studClg}" class="form-control" id="studClg" required>
+        </div>
+
+        <div class="form-group">
+            <label for="studPhoneNumber">Phone Number</label>
+            <input type="text" th:field="*{studPhoneNumber}" class="form-control" id="studPhoneNumber" required>
+        </div>
+
+        <div class="form-group">
+            <label for="studFee">Fee</label>
+            <input type="number" th:field="*{studFee}" class="form-control" id="studFee" required>
+        </div>
+
+        <div class="form-group">
+            <label for="studAddress">Address</label>
+            <textarea th:field="*{studAddress}" class="form-control" id="studAddress" rows="3" required></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Update Student</button>
+        <a href="/getStudents" class="btn btn-secondary ml-2">Cancel</a>
+    </form>
+</div>
+</body>
+</html>

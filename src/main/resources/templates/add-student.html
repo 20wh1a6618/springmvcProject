@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Student Form</title>
+    <!-- Bootstrap 4 CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5" th:fragment="content">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <h2 class="text-center mb-4">Student Form</h2>
+               
+                <!-- Form Start -->
+                <form th:action="@{/saveStudent}" th:object="${studentModel}" method="post" class="border p-4 shadow-sm rounded">
+                    <!-- Student Name -->
+                    <div class="form-group">
+                        <label for="studName">Student Name:</label>
+                        <input type="text" class="form-control" id="studName" th:field="*{studName}" placeholder="Enter student name" />
+                        <div class="text-danger" th:if="${#fields.hasErrors('studName')}" th:errors="*{studName}"></div>
+                    </div>
+
+                    <!-- Student Branch Dropdown -->
+                    <div class="form-group">
+                        <label for="studBranch">Student Branch:</label>
+                        <select class="form-control" id="studBranch" th:field="*{studBranch}" >
+                            <option value="" disabled selected>--Select Branch--</option>
+                            <option value="CSE" th:selected="${studentModel.studBranch == 'CSE'}">Computer Science Engineering (CSE)</option>
+                            <option value="ECE" th:selected="${studentModel.studBranch == 'ECE'}">Electronics and Communication Engineering (ECE)</option>
+                            <option value="MECH" th:selected="${studentModel.studBranch == 'MECH'}">Mechanical Engineering (MECH)</option>
+                            <option value="CIVIL" th:selected="${studentModel.studBranch == 'CIVIL'}">Civil Engineering (CIVIL)</option>
+                        </select>
+                        <div class="text-danger" th:if="${#fields.hasErrors('studBranch')}" th:errors="*{studBranch}"></div>
+                    </div>
+
+                    <!-- Student College -->
+                    <div class="form-group">
+                        <label for="studClg">Student College:</label>
+                        <input type="text" class="form-control" id="studClg" th:field="*{studClg}" placeholder="Enter student college" />
+                        <div class="text-danger" th:if="${#fields.hasErrors('studClg')}" th:errors="*{studClg}"></div>
+                    </div>
+
+                    <!-- Student Phone Number -->
+                    <div class="form-group">
+                        <label for="studPhoneNumber">Phone Number:</label>
+                        <input type="tel" class="form-control" id="studPhoneNumber" th:field="*{studPhoneNumber}" placeholder="Enter phone number" />
+                        <div class="text-danger" th:if="${#fields.hasErrors('studPhoneNumber')}" th:errors="*{studPhoneNumber}"></div>
+                    </div>
+
+                    <!-- Student Fee -->
+                    <div class="form-group">
+                        <label for="studFee">Fee:</label>
+                        <input type="number" step="0.01" class="form-control" id="studFee" th:field="*{studFee}" placeholder="Enter fee amount" />
+                        <div class="text-danger" th:if="${#fields.hasErrors('studFee')}" th:errors="*{studFee}"></div>
+                    </div>
+
+                    <!-- Student Address -->
+                    <div class="form-group">
+                        <label for="studAddress">Address:</label>
+                        <textarea class="form-control" id="studAddress" rows="3" th:field="*{studAddress}" placeholder="Enter student address" ></textarea>
+                        <div class="text-danger" th:if="${#fields.hasErrors('studAddress')}" th:errors="*{studAddress}"></div>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" class="btn btn-primary btn-block">Submit</button>
+                </form>
+                <!-- Form End -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 4 JS & Dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

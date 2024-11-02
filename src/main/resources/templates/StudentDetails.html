@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Details</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-5">
+    <h2>Student Details</h2>
+    <div th:if="${student != null}">
+        <p><strong>ID:</strong> <span th:text="${student.studId}"></span></p>
+        <p><strong>Name:</strong> <span th:text="${student.studName}"></span></p>
+        <p><strong>Branch:</strong> <span th:text="${student.studBranch}"></span></p>
+        <p><strong>PhoneNumber:</strong> <span th:text="${student.studPhoneNumber}"></span></p>
+        <p><strong>Fee:</strong> <span th:text="${student.studFee}"></span></p>
+        <p><strong>Student SchlorShip:</strong> <span th:text="${student.studSchlorShip}"></span></p>
+        <p><strong>Address:</strong> <span th:text="${student.studAddress}"></span></p>
+        <p><strong>College:</strong> <span th:text="${student.studClg}"></span></p>
+        <p><strong>Joined At:</strong> <span th:text="${(student.joinedOn}"></span></p>
+        <p><strong>Joined By:</strong> <span th:text="${student.joinedBy}"></span></p>
+    </div>
+    <div th:if="${student == null}">
+        <p>Student not found.</p>
+    </div>
+    <a href="/getStudents" class="btn btn-secondary mt-3">Back to Student List</a>
+</div>
+</body>
+</html>
